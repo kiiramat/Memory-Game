@@ -53,7 +53,7 @@ cardArray.sort(() => 0.5 - Math.random());
 
 
 function createBoard(gridDisplay) {
-    for ( let i = 0; i < 10; i++) {
+    for ( let i = 0; i < cardArray.length; i++) {
         const card = document.createElement("img");
         card.setAttribute("src", "images/blank.png");
         card.setAttribute("date-id", i);
