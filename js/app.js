@@ -73,8 +73,6 @@ function checkMatch() {
     const cards = document.querySelectorAll(".grid img")    
     const optionOneId = cardsChosenId[0]
     const optionTwoId = cardsChosenId[1] 
-    console.log(cardsChosenId)
-    console.log(cardsChosen)
 
     if (cardsChosen[0] === cardsChosen[1]) {      
         cards[optionOneId].setAttribute("src", "images/white.png")
