@@ -70,7 +70,7 @@ const gridDisplay = document.querySelector(".grid")
 createBoard(gridDisplay)
 
 function checkMatch() {
-    const cards = document.querySelectorAll(".grid img")
+    const cards = document.querySelectorAll(".grid img")    
     const optionOneId = cardsChosenId[0]
     const optionTwoId = cardsChosenId[1] 
     console.log(cardsChosenId)
@@ -102,7 +102,10 @@ function flipCard() {
     cardsChosen.push(cardArray[cardId].name)
     cardsChosenId.push(cardId)
     this.setAttribute("src", cardArray[cardId].img)
-    if (cardsChosen.length === 2) {
+    if (cardsChosenId[0] == cardsChosenId[1]) {
+        cardsChosen.pop()
+        cardsChosenId.pop()
+    } else if (cardsChosen.length === 2) {
         setTimeout(checkMatch, 500)
     }
 }
