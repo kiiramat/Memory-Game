@@ -59,7 +59,7 @@ const cardsWon = []
 function createBoard(gridDisplay) {
     for ( let i = 0; i < cardArray.length; i++) {
         const card = document.createElement("img")
-        card.setAttribute("src", "images/blank.png")
+        card.setAttribute("src", "images/cover.png")
         card.setAttribute("data-id", i)
         card.addEventListener("click", flipCard)
         gridDisplay.append(card)
@@ -81,8 +81,8 @@ function checkMatch() {
         cards[optionTwoId].removeEventListener("click", flipCard)
         cardsWon.push(cardsChosen)
     } else {
-        cards[optionOneId].setAttribute("src", "images/blank.png")
-        cards[optionTwoId].setAttribute("src", "images/blank.png")
+        cards[optionOneId].setAttribute("src", "images/cover.png")
+        cards[optionTwoId].setAttribute("src", "images/cover.png")
     }
 
     resultDisplay.innerHTML = cardsWon.length
