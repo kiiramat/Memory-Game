@@ -91,6 +91,7 @@ function checkMatch() {
     cardsChosenId = []
 
     if (cardsWon.length == cardArray.length/2) {
+        gridDisplay.classList.add("hidden");
         resultDisplay.innerHTML = "Congratulations! You found them all!"
     }
 }
