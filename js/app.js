@@ -52,7 +52,6 @@ const cardArray = [
 cardArray.sort(() => 0.5 - Math.random())
 
 const resultDisplay = document.querySelector(".result")
-let cardsFlipped = 0
 let cardsChosen = []
 let cardsChosenId = []
 const cardsWon = []
@@ -71,7 +70,6 @@ const gridDisplay = document.querySelector(".grid")
 createBoard(gridDisplay)
 
 function checkMatch() {
-    cardsFlipped = 0
     const cards = document.querySelectorAll(".grid img")    
     const optionOneId = cardsChosenId[0]
     const optionTwoId = cardsChosenId[1] 
@@ -98,22 +96,25 @@ function checkMatch() {
     }
 }
 
-function flipCard() {
-    if (cardsFlipped === 2) {
-        cardsFlipped = 0;
-        return;
-    } else {
-        cardsFlipped ++;
+function shouldFlipCard(cardId) {
+    if(cardsChosenId.length >= 2){
+        return false
     }
+    if(cardId === cardsChosenId[0]){
+        return false
+    }
+    return true
+}
 
+function flipCard() {
     const cardId = this.getAttribute("data-id")
+    if(!shouldFlipCard(cardId)){
+        return;
+    }
     cardsChosen.push(cardArray[cardId].name)
     cardsChosenId.push(cardId)
     this.setAttribute("src", cardArray[cardId].img)
-    if (cardsChosenId[0] == cardsChosenId[1]) {
-        cardsChosen.pop()
-        cardsChosenId.pop()
-    } else if (cardsChosen.length === 2) {
+    if (cardsChosen.length === 2) {
         setTimeout(checkMatch, 500)
     }
 }
