@@ -52,6 +52,7 @@ const cardArray = [
 cardArray.sort(() => 0.5 - Math.random())
 
 const resultDisplay = document.querySelector(".result")
+let cardsFlipped = 0
 let cardsChosen = []
 let cardsChosenId = []
 const cardsWon = []
@@ -70,6 +71,7 @@ const gridDisplay = document.querySelector(".grid")
 createBoard(gridDisplay)
 
 function checkMatch() {
+    cardsFlipped = 0
     const cards = document.querySelectorAll(".grid img")    
     const optionOneId = cardsChosenId[0]
     const optionTwoId = cardsChosenId[1] 
@@ -97,6 +99,13 @@ function checkMatch() {
 }
 
 function flipCard() {
+    if (cardsFlipped === 2) {
+        cardsFlipped = 0;
+        return;
+    } else {
+        cardsFlipped ++;
+    }
+
     const cardId = this.getAttribute("data-id")
     cardsChosen.push(cardArray[cardId].name)
     cardsChosenId.push(cardId)
